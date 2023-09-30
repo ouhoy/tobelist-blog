@@ -1,18 +1,22 @@
 <script setup lang="ts">
-const { title, short_description, img} = defineProps<{
+const {title, id, short_description, img} = defineProps<{
   title: string;
   short_description: string;
+  id: number,
   img: string
 }>()
 </script>
 
 <template>
   <div class="blog-card-container">
-    <img :src="img" :alt="title">
+    <img lazy :src="img" :alt="title">
     <div class="blog-card-details">
-      <h3>{{title}}</h3>
-      <p>{{short_description}}</p>
-      <button>Read more</button>
+      <h3>{{ title }}</h3>
+      <p>{{ short_description }}</p>
+      <router-link :to="{name: 'blog', params:{id: id}}">
+        <button>Read more</button>
+      </router-link>
+
     </div>
   </div>
 
