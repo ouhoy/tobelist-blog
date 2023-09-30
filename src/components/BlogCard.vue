@@ -1,17 +1,21 @@
 <script setup lang="ts">
-
+const { title, short_description, img} = defineProps<{
+  title: string;
+  short_description: string;
+  img: string
+}>()
 </script>
 
 <template>
   <div class="blog-card-container">
-    <img src="../assets/images/carl-heyerdahl-KE0nC8-58MQ-unsplash.jpg" alt="do more">
+    <img :src="img" :alt="title">
     <div class="blog-card-details">
-      <h3>Boost Your Productivity: 10 Proven Strategies</h3>
-      <p>Discover 10 proven strategies to enhance productivity, from prioritizing tasks to managing time effectively.
-        Achieve more in less time!</p>
+      <h3>{{title}}</h3>
+      <p>{{short_description}}</p>
       <button>Read more</button>
     </div>
   </div>
+
 </template>
 
 <style lang="scss">
@@ -19,6 +23,7 @@
 
 .blog-card-container {
   width: 100%;
+  margin-bottom: 64px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -55,13 +60,16 @@
       font-size: 16px;
       font-style: normal;
       font-weight: 500;
-      background-color: $primary-darker;
+      background-color: black;
 
       &:hover {
-        background-color: $primary-dark-hover !important;
+        background-color: $primary-darker !important;
+
       }
+
       &:active {
-        background-color: $primary-dark-active !important;
+        background-color: $primary-dark-hover !important;
+
       }
 
 

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import BlogCard from "@/components/BlogCard.vue";
+import posts from "../data/db.ts"
 </script>
 
 <template>
@@ -14,7 +15,8 @@ import BlogCard from "@/components/BlogCard.vue";
         productivity.</p>
     </div>
     <div class="blog-cards-container">
-      <BlogCard/>
+      <BlogCard v-for="post in posts" :key="post.id" :title="post.title" :short_description="post.short_description"
+                :img="post.img"/>
     </div>
   </div>
 
