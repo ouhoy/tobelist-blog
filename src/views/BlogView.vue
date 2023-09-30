@@ -46,7 +46,6 @@ header {
   gap: 16px;
 
   h4 {
-    max-width: 624px;
     color: #000;
     text-align: center;
     font-family: Montserrat, serif;
@@ -73,7 +72,7 @@ header {
   img {
     width: 100%;
     max-width: 768px;
-    margin-bottom: 24px;
+    margin-bottom: 56px;
     border-radius: 16px;
 
   }

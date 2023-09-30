@@ -78,15 +78,15 @@ function handleImageLoad() {
       font-size: 16px;
       font-style: normal;
       font-weight: 500;
-      background-color: black;
+      background-color: $primary;
 
       &:hover {
-        background-color: $primary-darker !important;
+        background-color: $primary-hover !important;
 
       }
 
       &:active {
-        background-color: $primary-dark-hover !important;
+        background-color: $primary-active !important;
 
       }
 
@@ -125,7 +125,6 @@ function handleImageLoad() {
   .card-image, img {
     width: 512px;
     height: 341.33px;
-
     border-radius: 16px;
 
   }
