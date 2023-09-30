@@ -5,13 +5,12 @@ import AuthButtons from "@/components/AuthButtons.vue";
 </script>
 
 <template>
-
-  <PageHeader title="Sign up for Tobelist today!"
-              description="Enhance productivity, boost efficiency, and achieve your goals with us. Join tobelist today and supercharge your efficiency!"/>
+  <PageHeader title="Welcome back to Tobelist!"
+              description="Login today to stay organized and make the most of your tasks!"/>
 
   <div class="form-container">
 
-    <AuthButtons authMethod="Sign up"/>
+    <AuthButtons authMethod="Login"/>
 
     <div class="separator-container">
       <hr/>
@@ -20,20 +19,19 @@ import AuthButtons from "@/components/AuthButtons.vue";
     </div>
 
     <form>
-      <label for="name">Name</label>
-      <input id="name" placeholder="John Doe" type="text">
+
       <label for="email">Email</label>
       <input id="email" placeholder="Example@email.com" type="email">
       <label for="password">Password</label>
-      <input id="password" placeholder="Strong Password" type="password">
+      <input id="password" placeholder="Password" type="password">
 
-      <button>Create my tobelist</button>
+      <button>Login</button>
     </form>
 
   </div>
-
 </template>
 
 <style scoped lang="scss">
 @import "../assets/styles/styleComponents/form";
+
 </style>

@@ -22,7 +22,10 @@
                     </div>
 
                     <div class="cta">
-                        <a href="#">Login</a>
+
+                      <router-link :to="{name: 'login'}">
+                        Login
+                      </router-link>
                       <router-link :to="{name: 'signup'}">
                         <button class="hide-for-mobile hide-for-tablet">
                             Get started

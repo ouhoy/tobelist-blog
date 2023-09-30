@@ -4,8 +4,7 @@
 $form-input-height: 48px;
 .form-container {
   max-width: 416px;
-  margin: 0 auto;
-  margin-top: -88px;
+  margin: -88px auto 0;
 
   .auth-buttons-container {
     display: flex;
@@ -86,7 +85,7 @@ $form-input-height: 48px;
 
     input {
       margin-top: 8px;
-      margin-bottom: 8px;
+      margin-bottom: 16px;
       width: 100%;
       height: $form-input-height;
       border-radius: 8px;
@@ -107,9 +106,10 @@ $form-input-height: 48px;
     }
 
     button {
-      margin-top: 8px;
       height: $form-input-height;
       background-color: $primary;
+      font-size: 16px;
+
 
     }
   }
