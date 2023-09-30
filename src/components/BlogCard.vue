@@ -78,7 +78,7 @@ function handleImageLoad() {
       font-size: 16px;
       font-style: normal;
       font-weight: 500;
-      background-color: $primary;
+      background-color: black;
 
       &:hover {
         background-color: $primary-hover !important;

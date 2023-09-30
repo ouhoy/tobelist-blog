@@ -53,7 +53,7 @@ nav {
       align-items: center;
       justify-content: center;
 
-      a {
+      a:not(:last-child) {
         margin-right: 40px;
         font-weight: 500;
       }
