@@ -1,5 +1,6 @@
 <script setup lang="ts">
 
+import BlogCard from "@/components/BlogCard.vue";
 </script>
 
 <template>
@@ -11,6 +12,9 @@
 
       <p>Stay up-to-date with the latest industry news as our marketing teams finds new ways to enhance
         productivity.</p>
+    </div>
+    <div class="blog-cards-container">
+      <BlogCard/>
     </div>
   </div>
 
