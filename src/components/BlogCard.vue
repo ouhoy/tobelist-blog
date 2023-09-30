@@ -1,15 +1,29 @@
 <script setup lang="ts">
+
+
+import {ref} from "vue";
+
 const {title, id, short_description, img} = defineProps<{
   title: string;
   short_description: string;
   id: number,
   img: string
 }>()
+
+const isLoading = ref(true);
+
+function handleImageLoad() {
+  isLoading.value = false;
+}
+
 </script>
 
 <template>
   <div class="blog-card-container">
-    <img lazy :src="img" :alt="title">
+    <div :class="{skeleton: isLoading}" class="card-image ">
+
+      <img @load="handleImageLoad" :src="img" :alt="title"/>
+    </div>
     <div class="blog-card-details">
       <h3>{{ title }}</h3>
       <p>{{ short_description }}</p>
@@ -80,9 +94,40 @@ const {title, id, short_description, img} = defineProps<{
     }
   }
 
-  img {
-    max-width: 512px;
+  .skeleton {
+    position: relative;
+
+  }
+
+  .skeleton::before {
+    content: "";
     border-radius: 16px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background: linear-gradient(90deg, #eee, #f9f9f9, #eee);
+    background-size: 200%;
+    animation: skeleton 1s infinite reverse;
+  }
+
+  @keyframes skeleton {
+    0% {
+      background-position: -100% 0;
+    }
+    100% {
+      background-position: 100% 0;
+    }
+  }
+
+  .card-image, img {
+    width: 512px;
+    height: 341.33px;
+
+    border-radius: 16px;
+
   }
 }
 </style>
