@@ -23,6 +23,7 @@ const currentPost = posts[id - 1];
     <img :src="currentPost.img" :alt="currentPost.title">
 
       <p>{{ currentPost.body }}</p>
+
     </div>
   </div>
 </template>

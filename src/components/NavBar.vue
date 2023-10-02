@@ -17,8 +17,13 @@
                         <a href="#">Home</a>
                         <a href="#">About</a>
                         <a href="#">Privacy</a>
-                        <a href="#">Blog</a>
-                        <a href="#">Contact</a>
+                      <router-link :to="{name: 'blogs'}">
+                        Blog
+                      </router-link>
+                      <router-link :to="{name: 'contact'}">
+                      Contact
+                      </router-link>
+
                     </div>
 
                     <div class="cta">
