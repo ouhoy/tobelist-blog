@@ -23,6 +23,6 @@ const {authMethod} = defineProps<{
 </template>
 
 <style lang="scss">
-@import "../assets/styles/styleComponents/form";
+@import "../assets/styles/components/form";
 
 </style>

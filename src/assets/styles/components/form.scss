@@ -1,0 +1,117 @@
+@import "../globals/variables";
+
+
+$form-input-height: 48px;
+.form-container {
+  max-width: 416px;
+  margin: -88px auto 0;
+
+  .auth-buttons-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+
+    .auth-button {
+      width: 100%;
+      height: $form-input-height;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 8px;
+      border: 1px solid #DBDBDB;
+      outline: 2px solid #f7f7f7;
+      cursor: pointer;
+
+      p {
+        color: #313234;
+        font-family: Inter, serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: -0.32px;
+      }
+    }
+
+    .apple-login-button {
+      p {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  .separator-container {
+    margin: 24px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    p {
+      margin-left: 16px;
+      margin-right: 16px;
+      color: #313234;
+      text-align: center;
+      font-family: Inter, serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 16px; /* 114.286% */
+      letter-spacing: -0.14px;
+
+    }
+
+    hr {
+      width: 100%;
+      height: 1px;
+      border: none;
+      background: #DBDBDB;
+
+    }
+  }
+
+  form {
+    width: 100%;
+
+    label {
+      margin-bottom: 8px;
+      font-weight: 500;
+      font-size: 13.33px;
+      color: #46474b;
+
+    }
+
+    input {
+      margin-top: 8px;
+      margin-bottom: 16px;
+      width: 100%;
+      height: $form-input-height;
+      border-radius: 8px;
+      color: $body-02;
+      border: 1px solid #d7d7d7;
+      outline: 2px solid #f7f7f7;
+      padding-left: 16px;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 24px;
+      transition: all 0.1s ease-in-out
+    }
+
+    input:active,
+    input:focus {
+      outline: 2px solid $primary-light-hover;
+      border: 2px solid $primary;
+    }
+
+    button {
+      height: $form-input-height;
+      background-color: $primary;
+      font-size: 16px;
+
+
+    }
+  }
+
+}

@@ -37,7 +37,7 @@ function handleImageLoad() {
 </template>
 
 <style lang="scss">
-@import "../assets/globals/variables";
+@import "../assets/styles/globals/variables";
 
 .blog-card-container {
   width: 100%;

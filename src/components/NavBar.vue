@@ -14,7 +14,9 @@
                 </div>
                 <div class="menu-cta">
                     <div class="menu hide-for-mobile hide-for-tablet">
-                        <a href="#">Home</a>
+                      <router-link :to="{name: 'landing'}">
+                        Home
+                      </router-link>
                         <a href="#">About</a>
                         <a href="#">Privacy</a>
                       <router-link :to="{name: 'blogs'}">
@@ -45,5 +47,5 @@
 </template>
 
 <style scoped lang="scss">
-@import "../assets/styles/styleComponents/navbar";
+@import "../assets/styles/components/navbar";
 </style>
