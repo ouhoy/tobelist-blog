@@ -1,4 +1,5 @@
 @import "./globals/variables";
+
 * {
   margin: 0;
   padding: 0;
@@ -54,4 +55,8 @@ a {
 .container {
   margin: 0 auto;
   max-width: $med-max-width;
+}
+
+::selection {
+  background: #ffedc1;
 }

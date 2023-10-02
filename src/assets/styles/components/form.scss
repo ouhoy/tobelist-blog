@@ -83,27 +83,38 @@ $form-input-height: 48px;
 
     }
 
-    input {
+    input, textarea {
       margin-top: 8px;
       margin-bottom: 16px;
       width: 100%;
       height: $form-input-height;
+      font-family: Inter, serif;
+      font-weight: 500;
       border-radius: 8px;
       color: $body-02;
       border: 1px solid #d7d7d7;
       outline: 2px solid #f7f7f7;
       padding-left: 16px;
-      font-weight: 500;
       font-size: 14px;
       line-height: 24px;
-      transition: all 0.1s ease-in-out
+      transition: all 0.1s ease-in-out;
+
+      &:focus {
+        outline: 2px solid $primary-light-hover;
+        border: 2px solid $primary;
+      }
+
     }
 
-    input:active,
-    input:focus {
-      outline: 2px solid $primary-light-hover;
-      border: 2px solid $primary;
+    input, textarea::placeholder {
+      font-weight: 400;
     }
+
+    textarea {
+      padding: 16px;
+      height: 128px;
+    }
+
 
     button {
       height: $form-input-height;

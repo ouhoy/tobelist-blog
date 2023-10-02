@@ -34,6 +34,6 @@ import AuthButtons from "@/components/AuthButtons.vue";
 
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import "../assets/styles/components/form";
 </style>
