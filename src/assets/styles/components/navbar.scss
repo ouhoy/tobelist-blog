@@ -77,3 +77,14 @@ nav {
   }
 
 }
+
+@media (max-width: 1054px) {
+  .hide-for-tablet {
+    display: none;
+  }
+  nav {
+    width: 95% !important;
+    margin: 0 auto;
+  }
+
+}
