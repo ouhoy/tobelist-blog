@@ -59,7 +59,7 @@ function handleMenuClick() {
             </div>
 
           </div>
-          <div v-if="showMenu" class="mobile-menu">
+          <div v-if="showMenu" class="mobile-menu hide-for-desktop">
             <router-link :to="{name: 'landing'}">
               Home
             </router-link>
