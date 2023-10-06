@@ -134,8 +134,17 @@ a {
   }
 }
 
+.hide-for-desktop {
+  display: none;
+}
+
 @media (max-width: 1020px) {
   $md-width: 768px;
+
+
+  .hide-for-desktop {
+    display: block;
+  }
 
   .container {
     max-width: $md-width;
@@ -145,10 +154,12 @@ a {
     max-width: $md-width;
     flex-direction: column;
     justify-content: center !important;
+
     .header-content {
       align-items: center !important;
-      justify-content: center ;
+      justify-content: center;
     }
+
     h1, p {
       text-align: center;
     }
@@ -209,6 +220,26 @@ a {
         text-align: center;
       }
 
+    }
+  }
+}
+
+@media (max-width: 572px) {
+  $sm-width: 512px;
+
+  .container {
+    max-width: $sm-width;
+  }
+  header {
+    h1 {
+      font-size: 40px !important;
+      line-height: 48px;
+    }
+
+    p {
+
+      width: $sm-width;
+      max-width: 95%;
     }
   }
 }

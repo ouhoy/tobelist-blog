@@ -26,7 +26,18 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 8px;
     transition: $main-transition;
+
+    h4 {
+      color: var(--gray-dark-hover, #313234);
+      font-family: Inter, sans-serif;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 20px;
+    }
+
 
     &:active {
       transform: scale(0.98);
@@ -84,7 +95,43 @@ nav {
   }
   nav {
     width: 95% !important;
+    position: relative;
+
     margin: 0 auto;
+
+    .menu-cta {
+
+      .cta {
+        a {
+          margin-right: 16px !important;
+        }
+
+      }
+
+      .mobile-menu {
+        width: 100vw;
+        height: 100vh;
+        margin: 0 auto;
+        padding: 16px;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        justify-content: flex-start;
+        align-items: flex-start;
+        background-color: white;
+
+        a {
+          display: block;
+          font-weight: 500;
+          font-size: 40px;
+          font-family: Montserrat, sans-serif;
+        }
+      }
+
+    }
   }
 
 }
