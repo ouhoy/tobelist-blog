@@ -9,19 +9,31 @@ const id = Number(route.params.id);
 const currentPost = posts[id - 1];
 
 
+function estimatedReadingTime(text: string) {
+  const wordCount = text.split(/\s+/).length;
+  const averageReadingSpeed = 200;
+  return Math.ceil(wordCount / averageReadingSpeed)
+
+
+}
+
 </script>
 
 <template>
   <div class="container">
     <header>
+      <div class="tags">
+        <span >Time Management</span>
+      </div>
       <h4>
         {{ currentPost.title }}
       </h4>
-      <p>{{ currentPost.short_description }}</p>
+      <div>
+        <p>August 22, 2023 <span>•</span> {{ estimatedReadingTime(currentPost.body)}} minute read</p>
+      </div>
     </header>
     <div class="blog-details">
-    <img :src="currentPost.img" :alt="currentPost.title">
-
+      <img :src="currentPost.img" :alt="currentPost.title">
       <p>{{ currentPost.body }}</p>
 
     </div>
@@ -35,16 +47,33 @@ p {
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
-  line-height: 28px; /* 175% */
+  line-height: 28px;
 }
 
 header {
-  margin: 128px auto 56px;
+  margin: 64px auto 56px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 16px;
+
+  .tags {
+    margin-bottom: 8px;
+
+    span {
+      border-radius: 25px;
+      padding: 8px 16px;
+      border: 1px solid black;
+      font-size: 14px;
+      font-weight: 500;
+
+      &:active {
+
+        transform: scale(0.1);
+      }
+    }
+  }
 
   h4 {
     color: #000;
@@ -59,7 +88,6 @@ header {
   p {
     max-width: 624px;
     text-align: center;
-
   }
 
 }

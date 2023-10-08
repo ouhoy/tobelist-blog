@@ -17,7 +17,7 @@ const {title, description} = defineProps<{
 <style scoped lang="scss">
 
 .page-heading {
-  margin: 128px auto;
+  margin: 64px auto;
   display: flex;
   flex-direction: column;
   justify-content: center;

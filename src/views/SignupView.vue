@@ -2,6 +2,17 @@
 
 import PageHeader from "@/components/PageHeader.vue";
 import AuthButtons from "@/components/AuthButtons.vue";
+import {ref} from "vue";
+
+
+const displayName = ref("");
+const email = ref("");
+const password = ref("");
+
+function handleSubmit() {
+  
+}
+
 </script>
 
 <template>
@@ -19,13 +30,15 @@ import AuthButtons from "@/components/AuthButtons.vue";
       <hr/>
     </div>
 
-    <form>
+    <form @submit.prevent="handleSubmit">
       <label for="name">Name</label>
-      <input id="name" placeholder="John Doe" type="text">
+      <input v-model="displayName" id="name" placeholder="John Doe" type="text">
+
       <label for="email">Email</label>
-      <input id="email" placeholder="Example@email.com" type="email">
+      <input v-model="email" id="email" placeholder="Example@email.com" type="email">
+
       <label for="password">Password</label>
-      <input id="password" placeholder="Strong Password" type="password">
+      <input v-model="password" id="password" placeholder="Strong Password" type="password">
 
       <button>Create my tobelist</button>
     </form>

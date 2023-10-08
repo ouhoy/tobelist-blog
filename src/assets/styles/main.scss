@@ -25,7 +25,6 @@ button {
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
-  //letter-spacing: -0.035em;
   line-height: 23px;
   display: flex;
   flex-direction: row;
@@ -138,6 +137,16 @@ a {
   display: none;
 }
 
+.clickable {
+  cursor: pointer;
+  transition: $main-transition;
+
+  &:active,
+  &:focus{
+    transform: scale(0.98);
+  }
+}
+
 @media (max-width: 1020px) {
   $md-width: 768px;
 
@@ -226,14 +235,16 @@ a {
 
 @media (max-width: 572px) {
   $sm-width: 512px;
-
+  .hide-for-mobile {
+    display: none;
+  }
   .container {
     max-width: $sm-width;
   }
   header {
     h1 {
       font-size: 40px !important;
-      line-height: 48px;
+      line-height: 48px !important;
     }
 
     p {

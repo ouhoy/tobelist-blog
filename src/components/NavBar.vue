@@ -22,8 +22,9 @@ function handleMenuClick() {
 
           <div class="logo">
 
-            <img src="src/assets/icons/Logomark.svg" alt="tobelist logo">
-            <h4>tobelist.net</h4>
+            <img src="/assets/icons/logomark.svg" alt="tobelist logo">
+
+            <h4 class="hide-for-mobile">tobelist.net</h4>
           </div>
         </router-link>
 
@@ -55,7 +56,7 @@ function handleMenuClick() {
               <button> Get started</button>
             </router-link>
             <div @click="handleMenuClick" class="ham-menu hide-for-desktop">
-              <img src="src/assets/icons/menu-icon.svg" alt="menu">
+              <img src="/assets/icons/menu-icon.svg" alt="menu">
             </div>
 
           </div>
