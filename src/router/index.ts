@@ -1,7 +1,29 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import BlogsView from "@/views/BlogsView.vue";
 import LandingView from "@/views/LandingView.vue";
+import {auth} from "@/firebase/config";
 
+
+// @ts-ignore
+const requireAuth = (to, from, next) => {
+    let user = auth.currentUser
+    if (!user) {
+        next({name: 'login'})
+        console.log(user)
+    } else {
+        next()
+    }
+}
+
+// @ts-ignore
+const userAuth = (to, from, next) => {
+    let user = auth.currentUser
+    if (user) {
+        next({name: 'app'})
+    } else {
+        next()
+    }
+}
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -9,14 +31,12 @@ const router = createRouter({
         {
             path: '/',
             name: 'landing',
-            component: LandingView
+            component: LandingView,
+            beforeEnter: userAuth
         },
         {
             path: '/blog/:id',
             name: 'blog',
-            // route level code-splitting
-            // this generates a separate chunk (About.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
             component: () => import('../views/BlogView.vue')
         },
 
@@ -26,23 +46,32 @@ const router = createRouter({
             component: () => import('../views/BlogsView.vue')
         },
 
-         {
+        {
             path: '/contact-us',
             name: 'contact',
             component: () => import('../views/ContactView.vue')
         },
-        ,
 
         {
             path: '/sign-up',
             name: 'signup',
-            component: () => import('../views/SignupView.vue')
+            component: () => import('../views/SignupView.vue'),
+            beforeEnter: userAuth
+
         },
 
         {
             path: '/login',
             name: 'login',
-            component: () => import('../views/LoginView.vue')
+            component: () => import('../views/LoginView.vue'),
+            beforeEnter: userAuth
+
+        },
+        {
+            path: '/app',
+            name: 'app',
+            component: () => import('../views/AppView.vue'),
+            beforeEnter: requireAuth
         },
     ]
 })

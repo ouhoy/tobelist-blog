@@ -3,12 +3,19 @@
 import PageHeader from "@/components/PageHeader.vue";
 import AuthButtons from "@/components/AuthButtons.vue";
 import {ref} from "vue";
+import useLogin from "@/composables/useLogin";
+import {useRouter} from "vue-router";
+
+const {error, isPending, login} = useLogin()
+const router = useRouter()
 
 const email = ref("");
 const password = ref("");
 
-function handleSubmit() {
+async function handleSubmit() {
+  await login(email.value, password.value)
 
+  if (!error.value) await router.push('/app')
 
 }
 

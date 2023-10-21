@@ -1,13 +1,26 @@
 <script setup lang="ts">
 
 import {ref} from "vue";
+import {signOut} from "firebase/auth"
+import getUser from "@/composables/getUser";
+import {useRouter} from "vue-router";
+import {auth} from "@/firebase/config";
 
+const {user} = getUser();
+const router = useRouter()
 const showMenu = ref(false)
+
+async function handleLogout() {
+  await signOut(auth)
+  if (!user.value) {
+    await router.push('/')
+  }
+
+}
 
 function handleMenuClick() {
 
   showMenu.value = !showMenu.value;
-
 
 }
 
@@ -29,7 +42,7 @@ function handleMenuClick() {
         </router-link>
 
 
-        <div class="menu-cta">
+        <div v-if="!user" class="menu-cta">
 
 
           <div class="menu hide-for-mobile hide-for-tablet">
@@ -79,6 +92,9 @@ function handleMenuClick() {
           </div>
 
         </div>
+
+         <div class="cursor-pointer" v-if="user" @click="handleLogout">{{ user.displayName }}</div>
+
 
       </nav>
     </div>
