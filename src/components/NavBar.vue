@@ -5,10 +5,14 @@ import {signOut} from "firebase/auth"
 import getUser from "@/composables/getUser";
 import {useRouter} from "vue-router";
 import {auth} from "@/firebase/config";
+import useClickOutside from "@/composables/useClickOutside";
 
 const {user} = getUser();
 const router = useRouter()
 const showMenu = ref(false)
+const showModal = ref(false)
+const modal = ref(null)
+
 
 async function handleLogout() {
   await signOut(auth)
@@ -23,6 +27,19 @@ function handleMenuClick() {
   showMenu.value = !showMenu.value;
 
 }
+
+
+
+function handleUserIconClick() {
+
+  showModal.value = !showModal.value;
+
+}
+
+
+useClickOutside(modal, ()=>{
+  showModal.value = false
+})
 
 </script>
 
@@ -93,7 +110,25 @@ function handleMenuClick() {
 
         </div>
 
-         <div class="cursor-pointer" v-if="user" @click="handleLogout">{{ user.displayName }}</div>
+        <div ref="modal"  @click="handleUserIconClick" class=" relative cursor-pointer flex items-center justify-center gap-4" v-if="user" >
+
+          {{ user.displayName }} <img class="user-icon rounded-full" :alt="user.displayName" :src="user.photoURL">
+
+          <div v-if="showModal"  class="options-modal absolute">
+            <div   id="dropdown"
+
+                 class="z-10  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+              <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                <li>
+                  <a @click="handleLogout" href="#"
+                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logout</a>
+
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
 
 
       </nav>
@@ -104,4 +139,13 @@ function handleMenuClick() {
 
 <style lang="scss">
 @import "../assets/styles/components/navbar";
+
+.user-icon {
+  width: 32px;
+}
+
+.options-modal {
+  top: 40px;
+  right: 16px;
+}
 </style>

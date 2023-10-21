@@ -5,7 +5,7 @@ import {db} from "@/firebase/config";
 import getUser from "@/composables/getUser";
 
 
-const {user}= getUser()
+const {user} = getUser()
 export default {
   props: {
     editedTask: {
@@ -22,6 +22,7 @@ export default {
   },
   watch: {
     editedTask() {
+      if (this.editedTask.title === "") return;
       this.method = "update"
       this.error = "";
       this.newTask = this.editedTask?.title
@@ -32,13 +33,16 @@ export default {
       this.error = ''
       if (!this.newTask) {
         this.error = "You need to describe the task first ^^";
+
+        if (this.method === "update") this.newTask = this.editedTask.title
+
         return
       }
 
       if (this.method === "add") {
         const collectionReference = collection(db, "tasks");
 
-         addDoc(collectionReference, {
+        addDoc(collectionReference, {
           title: this.newTask,
           complete: false,
           userId: user.value?.uid
@@ -48,12 +52,12 @@ export default {
 
       if (this.method === "update") {
         const docRef = doc(db, "tasks", this.editedTask.id);
-         updateDoc(docRef, {
+        updateDoc(docRef, {
           title: this.newTask,
         })
         this.$emit("update")
         this.newTask = ''
-        this.method= "add"
+        this.method = "add"
       }
 
 

@@ -6,6 +6,7 @@ import {ref} from "vue";
 import useLogin from "@/composables/useLogin";
 import {useRouter} from "vue-router";
 
+
 const {error, isPending, login} = useLogin()
 const router = useRouter()
 
@@ -16,6 +17,9 @@ async function handleSubmit() {
   await login(email.value, password.value)
 
   if (!error.value) await router.push('/app')
+  if(error.value) {
+    console.log(error.value)
+  }
 
 }
 
