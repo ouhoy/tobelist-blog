@@ -11,6 +11,7 @@ const {user} = getUser();
 const router = useRouter()
 const showMenu = ref(false)
 const showModal = ref(false)
+const landingMenu = ref(null)
 const modal = ref(null)
 
 
@@ -39,6 +40,9 @@ function handleUserIconClick() {
 
 useClickOutside(modal, ()=>{
   showModal.value = false
+})
+useClickOutside(landingMenu, ()=>{
+  showMenu.value = false
 })
 
 </script>
@@ -85,30 +89,46 @@ useClickOutside(modal, ()=>{
             <router-link :to="{name: 'signup'}">
               <button> Get started</button>
             </router-link>
-            <div @click="handleMenuClick" class="ham-menu hide-for-desktop">
+            <div @click="handleMenuClick" ref="landingMenu" class="ham-menu hide-for-desktop">
               <img src="/assets/icons/menu-icon.svg" alt="menu">
             </div>
 
           </div>
-          <div v-if="showMenu" class="mobile-menu hide-for-desktop">
-            <router-link :to="{name: 'landing'}">
+
+          <div v-if="showMenu"  class="mobile-menu absolute z-10  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 hide-for-desktop">
+
+            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+
+              <li class="px-1">
+
+             <router-link class=" rounded-lg block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" :to="{name: 'landing'}">
               Home
             </router-link>
-            <a href="#">About</a>
-            <a href="#">Privacy</a>
-            <router-link :to="{name: 'blogs'}">
+            <a href="#" class=" rounded-lg block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">About</a>
+            <a href="#" class=" rounded-lg block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Privacy</a>
+            <router-link class=" rounded-lg block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" :to="{name: 'blogs'}">
               Blog
             </router-link>
-            <router-link :to="{name: 'contact'}">
+            <router-link  class=" rounded-lg block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" :to="{name: 'contact'}">
               Contact
             </router-link>
 
-            <router-link class="login" :to="{name: 'login'}">
+            <router-link class=" rounded-lg block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white login" :to="{name: 'login'}">
               Login
             </router-link>
+                </li>
+            </ul>
+
           </div>
 
         </div>
+
+
+
+
+
+
+
 
         <div ref="modal"  @click="handleUserIconClick" class=" relative cursor-pointer flex items-center justify-center gap-4" v-if="user" >
 
@@ -119,9 +139,9 @@ useClickOutside(modal, ()=>{
 
                  class="z-10  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
               <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-                <li>
+                <li class="px-1">
                   <a @click="handleLogout" href="#"
-                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logout</a>
+                     class="rounded-lg block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logout</a>
 
                 </li>
 
@@ -146,6 +166,11 @@ useClickOutside(modal, ()=>{
 
 .options-modal {
   top: 40px;
+  right: 16px;
+}
+
+.mobile-menu {
+  top: 64px;
   right: 16px;
 }
 </style>
