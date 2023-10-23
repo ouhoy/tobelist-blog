@@ -44,8 +44,9 @@ function handleUpdate() {
     </div>
 </div>
     </div>
-  <div class="mx-auto mb-8" v-else-if="tasks?.length === 0">
-      <p class="text-center" >No tasks available for today 📘</p>
+  <div class="mx-auto mb-8 flex flex-col items-center justify-center gap-4" v-else-if="tasks?.length === 0">
+    <img src="../assets/icons/empty-box.png" alt="empty box">
+      <p class="text-center text-gray-700" >No tasks available for today.</p>
     </div>
 
     <ul v-else
