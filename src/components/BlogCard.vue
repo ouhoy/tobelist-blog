@@ -19,12 +19,12 @@ function handleImageLoad() {
 </script>
 
 <template>
-  <div class="blog-card-container">
+  <div class="blog-card-container flex-col md:flex-row">
     <div :class="{skeleton: isLoading}" class="card-image ">
 
       <img @load="handleImageLoad" :src="img" :alt="title"/>
     </div>
-    <div class="blog-card-details">
+    <div class="blog-card-details max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl">
       <h3>{{ title }}</h3>
       <p>{{ short_description }}</p>
       <router-link :to="{name: 'blog', params:{id: id}}">
@@ -74,7 +74,7 @@ function handleImageLoad() {
     button {
       width: 144px;
       height: 40px;
-      padding: 16px 32px;
+      padding: 0;
       font-size: 16px;
       font-style: normal;
       font-weight: 500;
@@ -127,6 +127,12 @@ function handleImageLoad() {
     height: 341.33px;
     border-radius: 16px;
 
+  }
+
+  .card-image {
+    img {
+      max-width: none;
+    }
   }
 }
 </style>

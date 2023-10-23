@@ -29,7 +29,7 @@ function handleMenuClick() {
 
 }
 
-
+console.log(user.value)
 
 function handleUserIconClick() {
 
@@ -38,10 +38,10 @@ function handleUserIconClick() {
 }
 
 
-useClickOutside(modal, ()=>{
+useClickOutside(modal, () => {
   showModal.value = false
 })
-useClickOutside(landingMenu, ()=>{
+useClickOutside(landingMenu, () => {
   showMenu.value = false
 })
 
@@ -95,28 +95,39 @@ useClickOutside(landingMenu, ()=>{
 
           </div>
 
-          <div v-if="showMenu"  class="mobile-menu absolute z-10  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 hide-for-desktop">
+          <div v-if="showMenu"
+               class="mobile-menu absolute z-10  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 hide-for-desktop">
 
             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
 
               <li class="px-1">
 
-             <router-link class=" rounded-lg block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" :to="{name: 'landing'}">
-              Home
-            </router-link>
-            <a href="#" class=" rounded-lg block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">About</a>
-            <a href="#" class=" rounded-lg block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Privacy</a>
-            <router-link class=" rounded-lg block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" :to="{name: 'blogs'}">
-              Blog
-            </router-link>
-            <router-link  class=" rounded-lg block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" :to="{name: 'contact'}">
-              Contact
-            </router-link>
+                <router-link
+                    class=" rounded-lg block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    :to="{name: 'landing'}">
+                  Home
+                </router-link>
+                <a href="#"
+                   class=" rounded-lg block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">About</a>
+                <a href="#"
+                   class=" rounded-lg block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Privacy</a>
+                <router-link
+                    class=" rounded-lg block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    :to="{name: 'blogs'}">
+                  Blog
+                </router-link>
+                <router-link
+                    class=" rounded-lg block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    :to="{name: 'contact'}">
+                  Contact
+                </router-link>
 
-            <router-link class=" rounded-lg block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white login" :to="{name: 'login'}">
-              Login
-            </router-link>
-                </li>
+                <router-link
+                    class=" rounded-lg block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white login"
+                    :to="{name: 'login'}">
+                  Login
+                </router-link>
+              </li>
             </ul>
 
           </div>
@@ -124,21 +135,32 @@ useClickOutside(landingMenu, ()=>{
         </div>
 
 
+        <div ref="modal" @click="handleUserIconClick"
+             class=" relative cursor-pointer flex items-center justify-center gap-4" v-if="user">
 
+          <img class="user-icon rounded-full" :alt="user.displayName" :src="user.photoURL">
 
+          <div v-if="showModal" class="options-modal absolute">
+            <div id="dropdown"
 
-
-
-
-        <div ref="modal"  @click="handleUserIconClick" class=" relative cursor-pointer flex items-center justify-center gap-4" v-if="user" >
-
-          {{ user.displayName }} <img class="user-icon rounded-full" :alt="user.displayName" :src="user.photoURL">
-
-          <div v-if="showModal"  class="options-modal absolute">
-            <div   id="dropdown"
-
-                 class="z-10  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                 class="z-10  bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
               <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                <li class="px-1">
+
+                  <a href="#"
+                     class="rounded-lg block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                    <div class="flex gap-2.5 items-center">
+                      <div class="flex flex-col items-start justify-center">
+                        <p class="text-gray-700 font-semibold text-14">{{ user.displayName }}</p>
+                        <p class="text-gray-700 text-12  ">{{ user.email }}</p>
+                      </div>
+                    </div>
+
+                  </a>
+
+                </li>
+
+                <hr class="mt-2 mb-2">
                 <li class="px-1">
                   <a @click="handleLogout" href="#"
                      class="rounded-lg block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logout</a>
@@ -162,6 +184,7 @@ useClickOutside(landingMenu, ()=>{
 
 .user-icon {
   width: 32px;
+  height: 32px;
 }
 
 .options-modal {
