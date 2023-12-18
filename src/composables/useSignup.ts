@@ -3,11 +3,13 @@ import {auth} from "@/firebase/config";
 
 import {createUserWithEmailAndPassword,updateProfile} from "firebase/auth"
 
+
+
 const error = ref("");
 const isPending = ref(false);
 
 
-async function signup(displayName: string, email: string, password: string) {
+async function signup( displayName: string, email: string, password: string) {
     error.value = ""
     isPending.value = true
 
@@ -18,7 +20,9 @@ async function signup(displayName: string, email: string, password: string) {
         }
 
         // Set the user's displayName
-        await updateProfile(res.user, {displayName})
+        // @ts-ignore
+        await updateProfile(res.user, {displayName, userType: "userType"})
+
 
         error.value = ""
         isPending.value = false

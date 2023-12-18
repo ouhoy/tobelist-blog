@@ -22,14 +22,11 @@ async function handleLogout() {
   }
 
 }
-
 function handleMenuClick() {
 
   showMenu.value = !showMenu.value;
 
 }
-
-console.log(user.value)
 
 function handleUserIconClick() {
 
@@ -44,6 +41,7 @@ useClickOutside(modal, () => {
 useClickOutside(landingMenu, () => {
   showMenu.value = false
 })
+
 
 </script>
 
@@ -137,8 +135,8 @@ useClickOutside(landingMenu, () => {
 
         <div ref="modal" @click="handleUserIconClick"
              class=" relative cursor-pointer flex items-center justify-center gap-4" v-if="user">
-
-          <img class="user-icon rounded-full" :alt="user.displayName" :src="user.photoURL">
+          <div v-if="user.photoURL"></div>
+          <img class="user-icon rounded-full" :alt="user.displayName? user.displayName: 'Hello User'" :src="user.photoURL?user.photoURL: 'src/assets/images/user.png' ">
 
           <div v-if="showModal" class="options-modal absolute">
             <div id="dropdown"
@@ -150,8 +148,13 @@ useClickOutside(landingMenu, () => {
                   <a href="#"
                      class="rounded-lg block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                     <div class="flex gap-2.5 items-center">
+                      <div class="w-8 h-8 rounded-full">
+                      <img class="w-8 h-8 rounded-full"  :alt="user.displayName? user.displayName: 'Hello User'" :src="user.photoURL?user.photoURL: 'src/assets/images/user.png' ">
+
+                      </div>
                       <div class="flex flex-col items-start justify-center">
-                        <p class="text-gray-700 font-semibold text-14">{{ user.displayName }}</p>
+
+                        <p class="text-gray-700 font-semibold text-14">{{ user.displayName }} </p>
                         <p class="text-gray-700 text-12  ">{{ user.email }}</p>
                       </div>
                     </div>
@@ -160,7 +163,7 @@ useClickOutside(landingMenu, () => {
 
                 </li>
 
-                <hr class="mt-2 mb-2">
+                <hr class="mt-2 mb-2 menu-list-separator">
                 <li class="px-1">
                   <a @click="handleLogout" href="#"
                      class="rounded-lg block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logout</a>
